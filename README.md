@@ -23,3 +23,5 @@ The “Jitter” parameter determines how much the control point values are rand
 The script pays attention to where a syllable falls into a word, as well as if it’s at the start or end of the phrase in setting parameters.
 
 The "Gender" is used as a way to color the timbre of the note, adding variety to a sustained tone. For long notes followed by a long rest, the Gender parameter from the dialog box. For all other notes, the Gender parameter is scaled by 40%.
+
+"Long Notes" and "Long Rests" are by default to be a quarter note in duration. The value can be modifed by adjusting the "Minimum Rest for Cadence (in 8th Notes)".
