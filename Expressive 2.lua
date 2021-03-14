@@ -212,7 +212,7 @@ function getSelectedRanges(options)
 	local ranges = {}
 	
 	-- iterate through notes
-	-- Note: this does handle overlapping notes properly
+	-- Note: this does *not* handle overlapping notes
 	for i = 1, #selectedNotes do
 		-- get the note
 		local theNote = selectedNotes[i]
@@ -284,15 +284,15 @@ end
 -- Create an curve in *am* by setting anchor points at *bStart* and *bEnd*, and then placing
 -- a control point at *controlPos* (a relative position from 0..1).
 --
--- 	am				the parameter table to modify
+-- 	am			the parameter table to modify
 --	bStart			start position of the note, in blicks
---  bEnd			end position of the note, in blicks
---  controlPos		relative position to place control point at between bStart and bEnd, from 0..1
+--      bEnd			end position of the note, in blicks
+--      controlPos		relative position to place control point at between bStart and bEnd, from 0..1
 -- 	scale			height to place control point at
 --	step			offset position to place curve anchor points
 -- 	jitter			percent of random jitter to apply
 --	restFollows		if *true*, the note is followed by a rest
---  newWord			if *true* the note is the starting syllable of a word
+--      newWord			if *true* the note is the starting syllable of a word
 --	priorEnd		position of last note, to determine if the note starts a new phrase
 
 function createCurve( am, bStart, bEnd, controlPos, scale, step, jitter, restFollows, newWord, priorEnd )
