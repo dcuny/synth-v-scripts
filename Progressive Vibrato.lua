@@ -16,6 +16,7 @@ function getTranslations(langCode)
   if langCode == "ja-jp" then
     return {
 		{"Start Vibrato Frequency", "ビブラート周波数を開始"},
+		{"Final Vibrato Frequency", "最終的なビブラート周波数"},
 		{"Vibrato Depth", "ビブラートの深さ"},
 		{"Vibrato Start Time", "ビブラート開始時間"},
 		{"Vibrato Left Time", "ビブラート左時間"},
@@ -43,6 +44,17 @@ function main()
 				name = "vibStartFrq",
 				type = "Slider",
 				label = SV:T("Start Vibrato Frequency"),
+				format = "%3.0f",
+				minValue = 0,
+				maxValue = 100,
+				interval = 1,
+				default = 30
+			},			
+			-- vibrato frequency slider
+			{
+				name = "vibFrq",
+				type = "Slider",
+				label = SV:T("Final Vibrato Frequency"),
 				format = "%3.0f",
 				minValue = 0,
 				maxValue = 100,
@@ -80,7 +92,7 @@ function main()
 				minValue = 0,
 				maxValue = 400,
 				interval = 10,
-				default = 20
+				default = 80
 			},			
 			-- vibrato ramp down slider
 			{
@@ -227,9 +239,16 @@ function getSelectedRanges(options)
 			-- use the value from the dialog 
 			vibDepth = options.vibDepth * 1.4 / 100
 		end
+
+		-- vibrato start frequency
+		vibStartFrq = options.vibStartFrq / 10
 		
-		-- vibrato frequency
+		-- vibrato target frequency
 		local vibFrq = theNoteAttribs.fF0Vbr or voice.fF0Vbr or 5.5
+		if not options.useNoteDefaults then
+			-- use the value from the dialog 
+			vibFrq = options.vibFrq / 10
+		end
 		
 		-- vibrato phase
 		local vibPhase = theNoteAttribs.pF0Vbr or voice.pF0Vbr or 0
@@ -249,7 +268,7 @@ function getSelectedRanges(options)
 		end
 		
 		-- save the values
-		ranges[i] = {bStart, bEnd, tStart, tEnd, bVibStart, tVibStart, vibDepth, vibFrq, vibPhase, vibLeft, vibRight}
+		ranges[i] = {bStart, bEnd, tStart, tEnd, bVibStart, tVibStart, vibDepth, vibStartFrq, vibFrq, vibPhase, vibLeft, vibRight}
 		
 		-- set the note vibrato depth to zero
 		theNote:setAttributes({dF0Vbr=0})
@@ -293,10 +312,11 @@ function progressiveVibrato(options)
 		local bVibStart = r[5]
 		local tVibStart = r[6]
 		local vibDepth = r[7] * 50 -- FIXME
-		local vibFrq = r[8]
-		local vibPhase = r[9]
-		local vibLeft = r[10]
-		local vibRight = r[11]
+		local vibStartFrq = r[8]
+		local vibFrq = r[9]
+		local vibPhase = r[10]
+		local vibLeft = r[11]
+		local vibRight = r[12]
 				
 		-- amount vibrato changes amplitude
 		local vibLoudScale = options.vibLoudScale / 1000
@@ -346,7 +366,7 @@ function progressiveVibrato(options)
 		local rampDownCounter = math.floor(totalSteps * (1-ratio))
 		
 		-- initial radians
-		local startRadians = math.pi * 2 * tVibWidth * (options.vibStartFrq/10)
+		local startRadians = math.pi * 2 * tVibWidth * vibStartFrq
 		local startRadiansPerStep = startRadians / totalSteps
 		
 		-- rate of change for radian step
@@ -375,10 +395,7 @@ function progressiveVibrato(options)
 			vibPhase = vibPhase + phaseRate
 			
 			-- ramp up?
-			if rampUpSteps < 0 then
-				-- envelope = 1
-				phaseRate = radiansPerStep
-			else
+			if rampUpSteps > 0 then
 				-- increase the amplitude envelope
 				envelope = envelope + rampUpDelta
 				-- increase the phase
