@@ -15,6 +15,7 @@ end
 function getTranslations(langCode)
   if langCode == "ja-jp" then
     return {
+		{"Progressive Vibrato", "プログレッシブビブラート"},
 		{"Start Vibrato Frequency", "ビブラート周波数を開始"},
 		{"Final Vibrato Frequency", "最終的なビブラート周波数"},
 		{"Vibrato Depth", "ビブラートの深さ"},
