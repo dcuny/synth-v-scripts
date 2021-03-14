@@ -22,12 +22,18 @@ function getClientInfo()
 end
 
 -- Internationalization
--- FIXME!
+-- FIXME! Translated by Google, so likely to be badly translated
 function getTranslations(langCode)
   if langCode == "ja-jp" then
     return {
-      {"Randomize Parameters", "パラメータの乱数化"},
-      {"Parameter Type", "パラメータタイプ"}
+	  {"Maximum Loudness Change(in decibels)", "最大ラウドネス変化（デシベル単位）"},
+	  {"Maximum Tension Change", "最大張力変化"}
+	  {"Maximum Breath Change", "最大呼吸変化"}
+	  {"Maximum Gender Change", "最大の性別の変化"}
+	  {"Expression Amount", "式の量"}
+	  {"Jitter Amount", "ジッタ量"}
+	  {"Minimum Rest for Cadence (in 8th Notes)", "ケイデンスの最小休憩（8分音符）"}
+
     }
   end
   return {}
