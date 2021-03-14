@@ -34,14 +34,14 @@ _Progressive Vibrato_ is a script for adding progressive vibrato to the selected
 
 Parameters are:
 
-* **Start Vibrato Frequency** The initial vibrato rate
-* **Final Vibrato Frequency** The final vibrato rate
-* **Vibrato Depth** The final vibrato depth
+* **Start Vibrato Frequency** Initial vibrato rate
+* **Final Vibrato Frequency** Target vibrato rate
+* **Vibrato Depth** Target vibrato depth
 * **"Vibrato Start Time** Delay between the onset of the note, and the onset of the vibrato
-* **Vibrato Left Time** The time it takes the vibrato to reach maximum frequency, depth and amplitude
-* **Vibrato Right Time** The time it takes the vibrato to decay at the end of the note
-* **Vibrato Volume** How much the vibrato effects the loudness
-* **Use Note Defaults** If select, use the note's default **Final Vibrato Frequency**, **Vibrato Depth**, **Vibrato Start Time**, **Vibrato Left Time** and **Vibrato Right Time** instead of those in the dialog.
+* **Vibrato Left Time** Time it takes the vibrato to reach maximum frequency, depth and amplitude
+* **Vibrato Right Time** Time it takes the vibrato to decay at the end of the note
+* **Vibrato Volume** Vibrato's effects on loudness
+* **Use Note Defaults** If selected, uses the note's default **Final Vibrato Frequency**, **Vibrato Depth**, **Vibrato Start Time**, **Vibrato Left Time** and **Vibrato Right Time** instead of those in the dialog.
 
-The script will also set the **Vibrato Depth** for the selected notes to zero, to prevent _Synthesizer V_ from applying the vibrato to the note.
+The script will also set the **Vibrato Depth** for the selected notes to zero, to prevent _Synthesizer V_ from applying the default vibrato to the note.
 
