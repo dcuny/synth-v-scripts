@@ -18,8 +18,8 @@ Curves are created for the following parameters:
 
 The default values for these parameters can be set in the dialog. The "Expression" parameter globally scales all the parameters.
 
-The “jitter” parameter determines how much the control point values are randomized.
+The “Jitter” parameter determines how much the control point values are randomized.
 
 The script pays attention to where a syllable falls into a word, as well as if it’s at the start or end of the phrase in setting parameters.
 
-Gender is used as a way to color the timbre of the note, adding variety to a sustained tone. For long notes followed by a long rest, the Gender parameter from the dialog box. For all other notes, the Gender parameter is scaled by 40%.
+The "Gender" is used as a way to color the timbre of the note, adding variety to a sustained tone. For long notes followed by a long rest, the Gender parameter from the dialog box. For all other notes, the Gender parameter is scaled by 40%.
