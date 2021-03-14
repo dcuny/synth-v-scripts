@@ -26,7 +26,7 @@ end
 function getTranslations(langCode)
   if langCode == "ja-jp" then
     return {
-	  {"Maximum Loudness Change(in decibels)", "最大ラウドネス変化（デシベル単位）"},
+	  {"Maximum Loudness Change (in decibels)", "最大ラウドネス変化（デシベル単位）"},
 	  {"Maximum Tension Change", "最大張力変化"}
 	  {"Maximum Breath Change", "最大呼吸変化"}
 	  {"Maximum Gender Change", "最大の性別の変化"}
@@ -60,7 +60,7 @@ function main()
 			{
 				name = "loudScale",
 				type = "Slider",
-				label = SV:T("Maximum Loudness Change(in decibels)"),
+				label = SV:T("Maximum Loudness Change (in decibels)"),
 				format = "%3.0f",
 				minValue = -12,
 				maxValue = 12,
