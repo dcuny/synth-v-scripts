@@ -21,19 +21,21 @@ function getClientInfo()
   }
 end
 
+
+
+
 -- Internationalization
 -- FIXME! Translated by Google, so likely to be badly translated
 function getTranslations(langCode)
   if langCode == "ja-jp" then
     return {
-	  {"Maximum Loudness Change (in decibels)", "最大ラウドネス変化（デシベル単位）"},
-	  {"Maximum Tension Change", "最大張力変化"}
-	  {"Maximum Breath Change", "最大呼吸変化"}
-	  {"Maximum Gender Change", "最大の性別の変化"}
-	  {"Expression Amount", "式の量"}
-	  {"Jitter Amount", "ジッタ量"}
-	  {"Minimum Rest for Cadence (in 8th Notes)", "ケイデンスの最小休憩（8分音符）"}
-
+	  {"Maximum Loudness Change(in decibels)", "最大ラウドネス変化（デシベル単位）"},
+	  {"Maximum Tension Change", "最大張力変化"},
+	  {"Maximum Breath Change", "最大呼吸変化"},
+	  {"Maximum Gender Change", "最大の性別の変化"},
+	  {"Expression Amount", "式の量"},
+	  {"Jitter Amount", "ジッタ量"},
+	  {"Minimum Rest for Cadence (in 8th Notes)", "ケイデンスの最小休憩（8分音符）"},
     }
   end
   return {}
@@ -60,7 +62,7 @@ function main()
 			{
 				name = "loudScale",
 				type = "Slider",
-				label = SV:T("Maximum Loudness Change (in decibels)"),
+				label = SV:T("Maximum Loudness Change(in decibels)"),
 				format = "%3.0f",
 				minValue = -12,
 				maxValue = 12,
@@ -284,15 +286,15 @@ end
 -- Create an curve in *am* by setting anchor points at *bStart* and *bEnd*, and then placing
 -- a control point at *controlPos* (a relative position from 0..1).
 --
--- 	am			the parameter table to modify
+-- 	am				the parameter table to modify
 --	bStart			start position of the note, in blicks
---      bEnd			end position of the note, in blicks
---      controlPos		relative position to place control point at between bStart and bEnd, from 0..1
+--  bEnd			end position of the note, in blicks
+--  controlPos		relative position to place control point at between bStart and bEnd, from 0..1
 -- 	scale			height to place control point at
 --	step			offset position to place curve anchor points
 -- 	jitter			percent of random jitter to apply
 --	restFollows		if *true*, the note is followed by a rest
---      newWord			if *true* the note is the starting syllable of a word
+--  newWord			if *true* the note is the starting syllable of a word
 --	priorEnd		position of last note, to determine if the note starts a new phrase
 
 function createCurve( am, bStart, bEnd, controlPos, scale, step, jitter, restFollows, newWord, priorEnd )
