@@ -3,7 +3,7 @@
 
 **Expressive 2**
 
-_Expressive 2_ is a script for automatically adding curves to the parameters associated with notes in Syntheziser V. The motivation is that I find it easier to move spline control points than drawing control curves.
+_Expressive 2_ is a script for automatically adding curves to the parameters associated with notes in Synthesizer V. The motivation is that I find it easier to move spline control points than drawing control curves.
 
 The script obviously can't automatically create a human performance, but it tries to create a reasonable starting place that can then be manually edited.
 
